@@ -16,7 +16,7 @@ class AITutor:
         # Định nghĩa ID mô hình dựa trên độ phức tạp của tác vụ
         # "Flash" cho trò chuyện nhanh, "Pro" cho suy luận sâu
         self.fast_model = "gemini-2.0-flash-exp" 
-        self.deep_model = "gemini-3.0-pro-preview"
+        self.deep_model = "gemini-1.5-pro"
 
     def get_chat_response(self, message, history, system_instruction):
         """
