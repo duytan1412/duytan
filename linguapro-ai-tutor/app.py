@@ -10,11 +10,11 @@ if "tutor" not in st.session_state:
 
 # Trạng thái phiên cho Lịch sử Chat
 if "messages" not in st.session_state:
-    st.session_state.messages =
+    st.session_state.messages = []
 
 # --- CẤU HÌNH SIDEBAR ---
 st.sidebar.title("⚙️ Cấu hình")
-track = st.sidebar.radio("Chọn Lộ trình Học:",)
+track = st.sidebar.radio("Chọn Lộ trình Học:", ["English (IELTS)", "German (A1-B2)"])
 
 # Định nghĩa Chỉ dẫn Hệ thống dựa trên Lộ trình
 if "English" in track:
@@ -33,7 +33,7 @@ if "current_track" not in st.session_state or st.session_state.current_track!= t
 st.title(f"LinguaPro: {track}")
 
 # Các tab cho các chế độ học tập khác nhau
-tab_chat, tab_essay, tab_voice = st.tabs()
+tab_chat, tab_essay, tab_voice = st.tabs(["💬 Hội thoại", "📝 Chấm điểm Bài luận", "🎤 Luyện Giọng nói"])
 
 # --- TAB 1: HỘI THOẠI ---
 with tab_chat:
