@@ -63,10 +63,18 @@ with tab_chat:
             )
             
             # Logic Stream
-            for chunk in response_stream:
-                if chunk.text:
-                    full_response += chunk.text
-                    response_placeholder.markdown(full_response + "▌")
+            try:
+                for chunk in response_stream:
+                    if hasattr(chunk, 'text') and chunk.text:
+                        full_response += chunk.text
+                        response_placeholder.markdown(full_response + "▌")
+                    elif hasattr(chunk, 'parts'):
+                        for part in chunk.parts:
+                            if hasattr(part, 'text'):
+                                full_response += part.text
+                                response_placeholder.markdown(full_response + "▌")
+            except Exception as e:
+                full_response = f"Lỗi: {str(e)}"
             
             response_placeholder.markdown(full_response)
             st.session_state.messages.append({"role": "model", "parts": [full_response]})
